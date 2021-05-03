@@ -19,6 +19,13 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: bash gradlew build
-    - name: Save artifacts
-      run: ls -laR
-
+    - name: Save release artifacts
+      uses: actions/Upload-artifact@v2
+      with:
+          name: current_build
+          path: app/build/outputs/apk/release/app-release-unsigned.apk       
+    - name: Save debug artifacts
+      uses: actions/Upload-artifact@v2
+      with:
+          name: current_build
+          path: app/build/outputs/apk/debug/app-debug.apk     
